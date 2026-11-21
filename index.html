@@ -109,13 +109,21 @@ footer{color:var(--muted);font-size:12px;margin-top:40px;line-height:1.6}
     <div class="next" id="next"><h2>Coming up</h2><ol></ol></div>
 
     <div class="note">
-      <h4>Keeping all three doors open</h4>
+      <h4>The plan: one application in October 2027, all for 2029 entry</h4>
       <ul>
-        <li>One UCAS application allows 5 choices, but no more than 4 in Medicine or Dentistry. So 4 medical/dental schools plus Cambridge Natural Sciences works.</li>
-        <li>That means sitting <b>both</b> tests: UCAT in summer 2027 (Medicine/Dentistry, including Cambridge Medicine) and ESAT in October 2027 (Cambridge NatSci).</li>
-        <li>You can apply to Cambridge or Oxford, not both. Cambridge has no Dentistry course.</li>
-        <li><b>Gap year at Viken:</b> with no A-level Biology, few medical or dental schools both accept her subjects and take deferred applications: Barts (Medicine and Dentistry), Leicester and Keele (Medicine), and Bristol (Dentistry, limited deferred offers). UCL, King's, Imperial, Leeds, Exeter and Nottingham Medicine all require Biology. Applying from Norway in autumn 2028, with grades in hand, opens up every school that doesn't require Biology, but means sitting the UCAT/ESAT in 2028. Cambridge NatSci is fine with deferral.</li>
-        <li>The real decision point is <b>summer 2027</b>, when the personal statement gets written. It has to suit every course she applies to.</li>
+        <li><b>Gap year first:</b> a music year at Musikkfolkehøgskolen Viken (2028/29), then university from autumn 2029. Every choice is a <b>deferred</b> application, with 2029 as the entry year on the UCAS form.</li>
+        <li><b>Cambridge Natural Sciences:</b> deferral is fine. Needs the ESAT in October 2027.</li>
+        <li><b>Medicine at Barts, Leicester and Keele:</b> all three accept Chemistry with Maths or Physics (no Biology) and consider deferred applications. They need the UCAT in summer 2027. Barts only guarantees deferral if it is stated on UCAS from the start. Confirm Keele's policy by email.</li>
+        <li><b>Fifth choice:</b> open. A second science course, or another medical school that accepts her subjects and deferral, if one turns up when the 2028-entry policies are published (around summer 2027).</li>
+        <li>UCAS allows at most 4 Medicine/Dentistry choices out of 5, and only one of Oxford or Cambridge. The personal statement must work for both NatSci and Medicine.</li>
+      </ul>
+    </div>
+    <div class="note">
+      <h4>Backup: apply again from Norway in 2028</h4>
+      <ul>
+        <li>If she has <b>not firmly accepted</b> an offer, she can apply again in autumn 2028 for 2029 entry, with A-level grades in hand. This opens every medical and dental school that doesn't require Biology, including those that don't take deferred applications.</li>
+        <li>That means sitting the UCAT again (summer 2028) and asking Owen's for a reference after leaving. Interviews would fall during the Viken year (December 2028 to March 2029), some of them online.</li>
+        <li>Don't firmly accept a Medicine offer that she might later turn down. Medical schools look badly on applicants who declined a Medicine place.</li>
       </ul>
     </div>
   </header>
@@ -228,7 +236,7 @@ const EVENTS = [
    link:"https://www.c3l6.caths.cam.ac.uk"},
 
   {d:"2027-06-14", t:"Decide the test plan and the shape of the application", type:"decide", status:"typical",
-   x:"Choose UCAT, ESAT or both (both keeps all three paths open). Draft the 5 UCAS choices and settle on Medicine vs. Dentistry (applying to both is possible but hard to cover in one personal statement)."},
+   x:"Confirm the plan: Cambridge NatSci plus Barts, Leicester and Keele Medicine, all deferred to 2029, so she sits both the UCAT and the ESAT. Check the 2028-entry policies as they are published (subjects without Biology, and deferral) and pick the fifth choice."},
 
   {d:"2027-06-22", t:"UCAT booking opens", tracks:["med","dent"], type:"deadline", status:"expected",
    x:"Book on day one. A test in late July or early August leaves September free for the ESAT and the personal statement.",
@@ -291,7 +299,7 @@ const EVENTS = [
    link:"https://esat-tmua.ac.uk/"},
 
   {d:"2027-10-15", t:"UCAS deadline: Cambridge, Medicine and Dentistry (18:00)", type:"deadline", status:"expected",
-   x:"The big one. Applies to Oxford/Cambridge and to almost all Medicine, Dentistry and Veterinary courses.",
+   x:"The big one. Submit Cambridge NatSci plus Barts, Leicester and Keele Medicine (and the fifth choice), all with 2029 as the entry year (deferred).",
    link:"https://www.ucas.com/undergraduate/applying-university/ucas-undergraduate-when-apply"},
 
   {d:"2027-10-22", t:"My Cambridge Application deadline", tracks:["cam","med"], type:"deadline", status:"expected",
@@ -329,7 +337,7 @@ const EVENTS = [
   {d:"2028-05-15", end:"2028-06-23", t:"A-level exams", type:"test", status:"typical"},
 
   {d:"2028-06-08", t:"Reply to offers: firm and insurance", type:"deadline", status:"expected",
-   x:"The exact reply date depends on when the last decision arrives. UCAS shows it in the Hub."},
+   x:"The exact reply date depends on when the last decision arrives. UCAS shows it in the Hub. Only firmly accept an offer she is happy to take up in 2029. With no firm acceptance, she is free to apply again in autumn 2028."},
 
   {d:"2028-08-17", t:"A-level results day", type:"milestone", status:"expected",
    x:"Places are confirmed through UCAS from 8am."},
@@ -338,8 +346,19 @@ const EVENTS = [
    x:"Folk high school years usually start in mid to late August and run until May. The exact date comes from the school.",
    link:"https://www.folkehogskole.no"},
 
-  {d:"2028-10-02", t:"Start university", type:"milestone", status:"expected",
-   x:"If going straight to university. With a Viken year, the start is autumn 2029. Cambridge Michaelmas term and most UK universities start in late September or early October."}
+  {d:"2028-07-10", end:"2028-09-22", t:"Backup: UCAT 2028", tracks:["med","dent"], type:"test", status:"expected",
+   x:"Only needed if applying again in 2028. UCAT scores are valid for one cycle only. A test centre in Oslo works, or sit it in the UK before leaving for Viken.",
+   link:"https://www.ucat.ac.uk/about-ucat/ucat-test-cycle/"},
+
+  {d:"2028-10-15", t:"Backup: UCAS deadline for re-application (from Norway)", tracks:["med","dent"], type:"deadline", status:"expected",
+   x:"If she has not firmly accepted an offer, she can apply again, with achieved grades, to any medical or dental school that doesn't require Biology, for 2029 entry. Owen's still writes the reference.",
+   link:"https://www.ucas.com/undergraduate/applying-university/ucas-undergraduate-when-apply"},
+
+  {d:"2028-12-04", end:"2029-03-30", t:"Backup: interviews during the Viken year", tracks:["med","dent"], type:"test", status:"typical",
+   x:"Medical and dental school interviews. Some schools run them online. Plan trips home around in-person MMIs."},
+
+  {d:"2029-10-01", t:"Start university (after the Viken year)", type:"milestone", status:"expected",
+   x:"Deferred entry: most UK universities and Cambridge Michaelmas term start in late September or early October 2029."}
 ];
 
 const TYPES = {
