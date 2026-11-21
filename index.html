@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f6f1e7">
+<title>Road to Uni</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f6f1e7; --card:#fffdf8; --ink:#1d1b18; --muted:#6f685d; --line:#e2d9c8;
+  --accent:#a8432a;
+  --deadline:#b3261e; --test:#5b3fa6; --visit:#1f6f5c; --prep:#8a6a12; --milestone:#1d4f8f; --decide:#c05a12;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --paper:#16140f; --card:#211e18; --ink:#f1ece2; --muted:#a59d8e; --line:#38332a; --accent:#e07a5c;
+    --deadline:#ef6a5f; --test:#a58cf0; --visit:#4fbf9f; --prep:#d8b04a; --milestone:#6ea4ea; --decide:#f09a52; }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px 120px}
+header{padding:38px 0 8px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:44px;line-height:1.02;margin:6px 0 10px;letter-spacing:-.02em}
+h1 em{font-style:italic;color:var(--accent);font-weight:600}
+.sub{color:var(--muted);max-width:56ch;margin:0}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0 6px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
+.stat b{display:block;font-family:Fraunces,serif;font-size:28px;line-height:1.1}
+.stat span{font-size:12px;color:var(--muted);line-height:1.3;display:block}
+
+.next{background:var(--ink);color:var(--paper);border-radius:var(--r);padding:16px 18px;margin:16px 0 4px}
+.next h2{margin:0 0 8px;font:600 12px Inter;letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+.next ol{margin:0;padding:0;list-style:none}
+.next li{display:flex;gap:12px;align-items:baseline;padding:6px 0;border-top:1px solid rgba(255,255,255,.12);cursor:pointer}
+.next li:first-child{border-top:0}
+.next .in{font-variant-numeric:tabular-nums;min-width:74px;font-weight:600;opacity:.85;font-size:13px}
+@media (prefers-color-scheme: dark){.next li{border-color:rgba(0,0,0,.15)}}
+
+.bar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:12px 0 10px;margin-top:14px;border-bottom:1px solid var(--line)}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 13px;font:500 13px Inter;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.row2{display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-size:13px;color:var(--muted);gap:8px;flex-wrap:wrap}
+.row2 label{display:flex;gap:6px;align-items:center;cursor:pointer}
+.link-btn{background:none;border:0;color:var(--accent);font:600 13px Inter;cursor:pointer;padding:0}
+
+.timeline{position:relative;margin-top:10px}
+.timeline::before{content:"";position:absolute;left:15px;top:0;bottom:0;width:2px;background:var(--line)}
+.month{position:relative;padding:26px 0 6px 44px}
+.month h3{margin:0;font-family:Fraunces,serif;font-weight:600;font-size:22px}
+.month h3 small{font:500 12px Inter;color:var(--muted);margin-left:8px;letter-spacing:.06em;text-transform:uppercase}
+.month::before{content:"";position:absolute;left:9px;top:33px;width:14px;height:14px;border-radius:50%;background:var(--paper);border:2px solid var(--muted)}
+
+.item{position:relative;margin:10px 0 0 44px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px 12px 16px;transition:opacity .2s}
+.item::before{content:"";position:absolute;left:-34px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--c)}
+.item::after{content:"";position:absolute;left:0;top:12px;bottom:12px;width:3px;border-radius:3px;background:var(--c)}
+.item.past{opacity:.5}
+.item.done{opacity:.45}
+.item.done .title{text-decoration:line-through}
+.top{display:flex;gap:10px;align-items:flex-start}
+.top .body{flex:1;min-width:0}
+.when{font-size:12px;font-weight:600;color:var(--c);letter-spacing:.02em}
+.when .rel{color:var(--muted);font-weight:500;margin-left:6px}
+.title{font-weight:600;font-size:15.5px;margin:2px 0 0}
+.detail{color:var(--muted);font-size:14px;margin:6px 0 0}
+.detail p{margin:0 0 6px}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.tag{font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.tag.exp{border-style:dashed}
+.tag.conf{color:var(--visit);border-color:color-mix(in srgb,var(--visit) 40%,transparent)}
+.actions{display:flex;gap:14px;margin-top:8px;font-size:13px}
+.actions a,.actions button{color:var(--accent);font-weight:600;text-decoration:none;background:none;border:0;padding:0;cursor:pointer;font-size:13px}
+.check{flex:none;width:22px;height:22px;border-radius:7px;border:2px solid var(--line);background:transparent;cursor:pointer;margin-top:2px;display:grid;place-items:center;color:var(--paper)}
+.check[aria-pressed=true]{background:var(--c);border-color:var(--c)}
+.item[hidden],.month[hidden]{display:none}
+
+.today{position:relative;margin:22px 0 8px 0;padding-left:44px;scroll-margin-top:130px}
+.today::before{content:"";position:absolute;left:4px;top:50%;width:24px;height:24px;margin-top:-12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 22%,transparent)}
+.today span{display:inline-block;background:var(--accent);color:#fff;font:600 12px Inter;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+
+.legend{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0 0;font-size:12px;color:var(--muted)}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:0}
+
+.note{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;margin-top:16px;font-size:14px}
+.note h4{margin:0 0 6px;font-family:Fraunces,serif;font-size:17px}
+.note ul{margin:0;padding-left:18px;color:var(--muted)}
+.note li{margin:3px 0}
+footer{color:var(--muted);font-size:12px;margin-top:40px;line-height:1.6}
+
+.fab{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom));background:var(--accent);color:#fff;border:0;border-radius:999px;padding:12px 16px;font:600 13px Inter;box-shadow:0 6px 20px rgba(0,0,0,.18);cursor:pointer}
+@media (max-width:520px){ h1{font-size:36px} .stat b{font-size:23px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Year 12 → October 2028</div>
+    <h1>Road to <em>Uni</em></h1>
+    <p class="sub">Maths · Further Maths · Chemistry · Physics. Every open day, test and deadline on the way to Natural Sciences at Cambridge, Medicine or Dentistry.</p>
+    <div class="stats" id="stats"></div>
+    <div class="next" id="next"><h2>Coming up</h2><ol></ol></div>
+
+    <div class="note">
+      <h4>Keeping all three doors open</h4>
+      <ul>
+        <li>One UCAS application allows 5 choices, but no more than 4 in Medicine or Dentistry. So 4 medical/dental schools plus Cambridge Natural Sciences works.</li>
+        <li>That means sitting <b>both</b> tests: UCAT in summer 2027 (Medicine/Dentistry, including Cambridge Medicine) and ESAT in October 2027 (Cambridge NatSci).</li>
+        <li>You can apply to Cambridge or Oxford, not both. Cambridge has no Dentistry course.</li>
+        <li>The real decision point is <b>summer 2027</b>, when the personal statement gets written. It has to suit every course she applies to.</li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="legend" id="legend"></div>
+  <div class="bar">
+    <div class="chips" id="chips">
+      <button class="chip" data-track="all" aria-pressed="true">Everything</button>
+      <button class="chip" data-track="cam" aria-pressed="false">Cambridge Science</button>
+      <button class="chip" data-track="med" aria-pressed="false">Medicine</button>
+      <button class="chip" data-track="dent" aria-pressed="false">Dentistry</button>
+    </div>
+    <div class="row2">
+      <label><input type="checkbox" id="showPast"> Show past</label>
+      <label><input type="checkbox" id="hideDone"> Hide done</label>
+      <button class="link-btn" id="icsAll">Add all to calendar</button>
+    </div>
+  </div>
+
+  <div class="timeline" id="timeline"></div>
+
+  <footer>
+    <b>Confirmed</b> dates have been published by the university or test body. <b>Expected</b> dates follow the pattern from the 2027-entry cycle and get updated once the 2028-entry dates are out (UCAT usually early in the year, UAT-UK/ESAT around April). Always check the linked official page before booking anything.<br>
+    Last checked: 21 Nov 2026.
+  </footer>
+</div>
+<button class="fab" id="toToday">Today ↓</button>
+
+<script>
+/* ---------- Data ----------
+   type: deadline | test | visit | prep | milestone | decide
+   tracks: subset of ["cam","med","dent"]; omitted = everyone
+   status: "confirmed" | "expected" | "school" (set by her school) | "typical" (usual timing, varies)
+*/
+const EVENTS = [
+  {d:"2026-09-07", t:"Year 12 starts", type:"milestone", status:"confirmed",
+   x:"A-levels in Maths, Further Maths, Chemistry and Physics."},
+
+  {d:"2026-11-23", end:"2027-07-16", t:"Build a super-curricular log", type:"prep", status:"typical",
+   x:"Keep a running note of books, lectures, podcasts, Isaac Physics / Isaac Chemistry problems and projects, with a line on what she took from each. It is the raw material for the personal statement and for interviews.",
+   link:"https://isaacscience.org"},
+
+  {d:"2026-12-01", end:"2027-03-31", t:"Line up work experience and volunteering", tracks:["med","dent"], type:"prep", status:"typical",
+   x:"Medical and dental schools want sustained caring or people-facing experience (care home, hospice, St John Ambulance, tutoring) more than a single glamorous placement. Hospital schemes and dental practices fill early, so ask now. For Dentistry, start with your own dentist. Free virtual options: Observe GP and BSMS virtual work experience.",
+   link:"https://www.medschools.ac.uk/studying-medicine/making-an-application/work-experience"},
+
+  {d:"2027-01-11", end:"2027-03-15", t:"Summer school applications", type:"prep", status:"typical",
+   x:"Most residential programmes (Sutton Trust for eligible state-school students, university-run STEM and medicine schools) open in January and close by March.",
+   link:"https://summerschools.suttontrust.com"},
+
+  {d:"2027-01-27", t:"UK Chemistry Olympiad – Round 1", tracks:["cam","med"], type:"test", status:"typical",
+   x:"Sat in school, usually late January. Year 12s can enter. Good stretch and a useful thing to discuss at interview. Ask the chemistry department.",
+   link:"https://edu.rsc.org/enrichment/uk-chemistry-olympiad"},
+
+  {d:"2027-02-10", t:"St John's College (Cambridge) Year 12 Visit Day", tracks:["cam","med"], type:"visit", status:"confirmed",
+   x:"A college visit day for Year 12s. A second date is on 9 March 2027.",
+   link:"https://www.joh.cam.ac.uk/apply/outreach-and-open-days/open-days"},
+
+  {d:"2027-03-09", t:"St John's College (Cambridge) Year 12 Visit Day", tracks:["cam","med"], type:"visit", status:"confirmed",
+   link:"https://www.joh.cam.ac.uk/apply/outreach-and-open-days/open-days"},
+
+  {d:"2027-03-15", t:"Cambridge Open Day booking opens", tracks:["cam","med"], type:"deadline", status:"confirmed",
+   x:"Booking for the July 2027 Open Days opens in mid-March. Book on the day it opens. Popular departmental talks fill quickly.",
+   link:"https://www.undergraduate.study.cam.ac.uk/events/cambridge-open-days"},
+
+  {d:"2027-03-22", end:"2027-04-30", t:"Shortlist and book other open days", tracks:["med","dent"], type:"visit", status:"typical",
+   x:"Medical and dental schools mostly run open days in June/July and September/October. Shortlist 6–8 that fit her profile (UCAT-heavy vs. grades-heavy vs. interview style), then book.",
+   link:"https://www.ucas.com/events"},
+
+  {d:"2027-03-29", end:"2027-05-31", t:"UCAT familiarisation (light)", tracks:["med","dent"], type:"prep", status:"typical",
+   x:"Try the official question banks to learn the format: Verbal Reasoning, Decision Making, Quantitative Reasoning, Situational Judgement. Serious prep (6–8 weeks) comes in early summer.",
+   link:"https://www.ucat.ac.uk/prepare/"},
+
+  {d:"2027-04-27", t:"2028-entry courses appear on UCAS", type:"milestone", status:"expected",
+   x:"The UCAS search tool begins showing courses starting in 2028, with entry requirements.",
+   link:"https://www.ucas.com/undergraduate/applying-university/ucas-undergraduate-when-apply"},
+
+  {d:"2027-05-11", t:"UCAS opens for 2028 entry", type:"milestone", status:"expected",
+   x:"She can register and start the application in the UCAS Hub, but can't submit until September.",
+   link:"https://www.ucas.com/undergraduate/applying-university/ucas-undergraduate-when-apply"},
+
+  {d:"2027-05-11", t:"UCAT registration opens", tracks:["med","dent"], type:"deadline", status:"expected",
+   x:"Create the UCAT account. Bursary and access-arrangement applications open at the same time. Cambridge Medicine also requires the UCAT.",
+   link:"https://www.ucat.ac.uk/about-ucat/ucat-test-cycle/"},
+
+  {d:"2027-06-01", t:"ESAT (UAT-UK) account creation opens", tracks:["cam"], type:"deadline", status:"expected",
+   x:"Create the UAT-UK account. Booking itself opens in July.",
+   link:"https://esat-tmua.ac.uk/deadlines"},
+
+  {d:"2027-06-07", end:"2027-06-25", t:"Year 12 end-of-year exams", type:"milestone", status:"school",
+   x:"These usually set predicted grades, which go on the UCAS form. Cambridge NatSci and Medicine both typically ask for A*A*A. The exact dates are set by her school."},
+
+  {d:"2027-06-14", t:"Decide the test plan and the shape of the application", type:"decide", status:"typical",
+   x:"Choose UCAT, ESAT or both (both keeps all three paths open). Draft the 5 UCAS choices and settle on Medicine vs. Dentistry (applying to both is possible but hard to cover in one personal statement)."},
+
+  {d:"2027-06-22", t:"UCAT booking opens", tracks:["med","dent"], type:"deadline", status:"expected",
+   x:"Book on day one. A test in late July or early August leaves September free for the ESAT and the personal statement.",
+   link:"https://www.ucat.ac.uk/register/booking-your-test/"},
+
+  {d:"2027-06-28", end:"2027-08-13", t:"UCAT serious prep", tracks:["med","dent"], type:"prep", status:"typical",
+   x:"6–8 weeks of timed practice. The full mock tests in the official question bank are the best guide to score."},
+
+  {d:"2027-07-08", end:"2027-07-09", t:"Cambridge Open Days", tracks:["cam","med"], type:"visit", status:"confirmed",
+   x:"The main undergraduate Open Days. All colleges and departments take part. See the NatSci and Medicine talks and visit 3–4 colleges.",
+   link:"https://www.undergraduate.study.cam.ac.uk/events/cambridge-open-days"},
+
+  {d:"2027-07-12", t:"UCAT testing window opens", tracks:["med","dent"], type:"test", status:"expected",
+   x:"Testing runs until late September. The score is shown before leaving the test centre.",
+   link:"https://www.ucat.ac.uk/about-ucat/ucat-test-cycle/"},
+
+  {d:"2027-07-19", t:"ESAT booking opens", tracks:["cam"], type:"deadline", status:"expected",
+   x:"NatSci candidates sit Mathematics 1 plus two modules from Maths 2, Physics, Chemistry and Biology. She should book the October sitting: Cambridge applicants must take it in October.",
+   link:"https://www.undergraduate.study.cam.ac.uk/apply/how/science-engineering-admission-test"},
+
+  {d:"2027-07-19", end:"2027-09-10", t:"Personal statement drafting", type:"prep", status:"typical",
+   x:"UCAS now uses three structured questions instead of a free essay. Aim for a full draft before term starts, then 2–3 rounds of feedback.",
+   link:"https://www.ucas.com/applying/applying-to-university/writing-your-personal-statement"},
+
+  {d:"2027-08-02", end:"2027-10-08", t:"ESAT preparation", tracks:["cam"], type:"prep", status:"typical",
+   x:"Official specification and practice papers. Further Maths helps a lot with Maths 2. Practise under timed conditions.",
+   link:"https://esat-tmua.ac.uk/about-the-tests/esat-test/"},
+
+  {d:"2027-09-01", t:"UCAS applications can be submitted", type:"milestone", status:"expected",
+   x:"Submission opens once the school reference and predicted grades are in."},
+
+  {d:"2027-09-10", t:"Cambridge Colleges Open Day", tracks:["cam","med"], type:"visit", status:"confirmed",
+   x:"Colleges only (no departments). Useful for a final college choice. Booking opens after the July Open Days.",
+   link:"https://www.undergraduate.study.cam.ac.uk/events/cambridge-open-days"},
+
+  {d:"2027-09-15", t:"UCAT booking deadline", tracks:["med","dent"], type:"deadline", status:"expected",
+   x:"No exceptions after this. Last test day is about a week later.",
+   link:"https://www.ucat.ac.uk/register/booking-your-test/"},
+
+  {d:"2027-09-24", t:"School's internal UCAS deadline", type:"deadline", status:"school",
+   x:"Most schools want the full application a few weeks early so they can write the reference. Check the actual date with the sixth form."},
+
+  {d:"2027-09-27", t:"ESAT booking deadline (October sitting)", tracks:["cam"], type:"deadline", status:"expected",
+   x:"Without an ESAT booking, the Cambridge NatSci application can be invalid.",
+   link:"https://esat-tmua.ac.uk/deadlines"},
+
+  {d:"2027-10-04", t:"UKMT Senior Maths Challenge", type:"test", status:"typical",
+   x:"Usually early October, sat in school. Optional, but good evidence of mathematical stretch.",
+   link:"https://ukmt.org.uk"},
+
+  {d:"2027-10-11", end:"2027-10-15", t:"ESAT sitting", tracks:["cam"], type:"test", status:"expected",
+   x:"At a Pearson VUE test centre. Results come in November.",
+   link:"https://esat-tmua.ac.uk/"},
+
+  {d:"2027-10-15", t:"UCAS deadline: Cambridge, Medicine and Dentistry (18:00)", type:"deadline", status:"expected",
+   x:"The big one. Applies to Oxford/Cambridge and to almost all Medicine, Dentistry and Veterinary courses.",
+   link:"https://www.ucas.com/undergraduate/applying-university/ucas-undergraduate-when-apply"},
+
+  {d:"2027-10-22", t:"My Cambridge Application deadline", tracks:["cam","med"], type:"deadline", status:"expected",
+   x:"Cambridge's own supplementary form, sent by email after UCAS submission. Also the deadline for extenuating circumstances.",
+   link:"https://www.magd.cam.ac.uk/undergraduate/apply/dates-and-deadlines"},
+
+  {d:"2027-11-01", end:"2027-12-03", t:"Interview practice", type:"prep", status:"typical",
+   x:"Cambridge: academic, problem-based interviews. Practise thinking aloud on unseen problems. Medicine/Dentistry: MMIs covering ethics, NHS awareness, role-play and reflection on work experience."},
+
+  {d:"2027-11-12", t:"ESAT results released", tracks:["cam"], type:"milestone", status:"expected"},
+
+  {d:"2027-12-06", end:"2027-12-17", t:"Cambridge interviews", tracks:["cam","med"], type:"test", status:"expected",
+   x:"Invitations usually arrive in November. Most interviews are in early to mid December."},
+
+  {d:"2027-12-06", end:"2028-03-31", t:"Medical / dental school interviews (MMIs)", tracks:["med","dent"], type:"test", status:"typical",
+   x:"Invitations arrive from November to February, depending on the school."},
+
+  {d:"2028-01-12", t:"UCAS equal-consideration deadline (other courses)", type:"deadline", status:"expected",
+   x:"Only matters for courses that don't fall under the October deadline."},
+
+  {d:"2028-01-26", t:"Cambridge decisions", tracks:["cam","med"], type:"milestone", status:"expected",
+   x:"Offer, reject or Winter Pool. Around a quarter of offers come through the Winter Pool."},
+
+  {d:"2028-05-15", end:"2028-06-23", t:"A-level exams", type:"test", status:"typical"},
+
+  {d:"2028-06-08", t:"Reply to offers: firm and insurance", type:"deadline", status:"expected",
+   x:"The exact reply date depends on when the last decision arrives. UCAS shows it in the Hub."},
+
+  {d:"2028-08-17", t:"A-level results day", type:"milestone", status:"expected",
+   x:"Places are confirmed through UCAS from 8am."},
+
+  {d:"2028-10-02", t:"Start university", type:"milestone", status:"expected",
+   x:"Cambridge Michaelmas term and most UK universities start in late September or early October."}
+];
+
+const TYPES = {
+  deadline:{label:"Deadline / booking", c:"--deadline"},
+  test:{label:"Test / interview", c:"--test"},
+  visit:{label:"Visit / open day", c:"--visit"},
+  prep:{label:"Preparation", c:"--prep"},
+  decide:{label:"Decision", c:"--decide"},
+  milestone:{label:"Milestone", c:"--milestone"}
+};
+const STATUS = {confirmed:"Confirmed", expected:"Expected", school:"Set by school", typical:"Usual timing"};
+const TRACKNAME = {cam:"Cambridge Science", med:"Medicine", dent:"Dentistry"};
+
+/* ---------- State (localStorage guarded) ---------- */
+const store = {
+  get(k,d){ try{ const v = localStorage.getItem("rtu:"+k); return v==null?d:JSON.parse(v);}catch(e){return d} },
+  set(k,v){ try{ localStorage.setItem("rtu:"+k, JSON.stringify(v)); }catch(e){} }
+};
+let track = store.get("track","all");
+let done = new Set(store.get("done",[]));
+let showPast = store.get("showPast", false);
+let hideDone = store.get("hideDone", false);
+
+/* ---------- Helpers ---------- */
+const DAY = 864e5;
+const today = (()=>{ const n=new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate()); })();
+const parse = s => { const [y,m,d]=s.split("-").map(Number); return new Date(y,m-1,d); };
+const fmt = (d,o) => d.toLocaleDateString("en-GB", o);
+const idOf = e => e.d + "|" + e.t;
+EVENTS.forEach(e => { e.id = idOf(e); e.start = parse(e.d); e.stop = e.end ? parse(e.end) : e.start; });
+EVENTS.sort((a,b)=> a.start-b.start || (a.stop-a.start)-(b.stop-b.start));
+
+function rel(e){
+  const s = Math.round((e.start - today)/DAY), f = Math.round((e.stop - today)/DAY);
+  if (s <= 0 && f >= 0) return e.end ? "happening now" : "today";
+  if (f < 0) return "done";
+  if (s === 1) return "tomorrow";
+  if (s < 14) return `in ${s} days`;
+  if (s < 63) return `in ${Math.round(s/7)} weeks`;
+  return `in ${Math.round(s/30.4)} months`;
+}
+function whenText(e){
+  const o = {day:"numeric", month:"short"};
+  if (!e.end) return fmt(e.start, {weekday:"short", day:"numeric", month:"short"});
+  return `${fmt(e.start,o)} → ${fmt(e.stop, e.stop.getFullYear()!==e.start.getFullYear()? {...o, year:"numeric"} : o)}`;
+}
+const visible = e => track==="all" || !e.tracks || e.tracks.includes(track);
+const isPast = e => e.stop < today;
+
+/* ---------- Calendar export ---------- */
+function icsDate(d){ return d.getFullYear()+String(d.getMonth()+1).padStart(2,"0")+String(d.getDate()).padStart(2,"0"); }
+function icsEscape(s){ return (s||"").replace(/\\/g,"\\\\").replace(/[,;]/g, m=>"\\"+m).replace(/\n/g,"\\n"); }
+function makeICS(list){
+  const lines = ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//road-to-uni//EN","CALSCALE:GREGORIAN"];
+  const stamp = new Date().toISOString().replace(/[-:]/g,"").split(".")[0]+"Z";
+  list.forEach(e=>{
+    const endExcl = new Date(e.stop.getTime()+DAY);
+    lines.push("BEGIN:VEVENT",
+      "UID:"+icsDate(e.start)+"-"+e.t.replace(/[^a-z0-9]/gi,"").slice(0,40)+"@road-to-uni",
+      "DTSTAMP:"+stamp,
+      "DTSTART;VALUE=DATE:"+icsDate(e.start),
+      "DTEND;VALUE=DATE:"+icsDate(endExcl),
+      "SUMMARY:"+icsEscape((e.status==="expected"?"(expected) ":"")+e.t),
+      "DESCRIPTION:"+icsEscape((e.x||"")+(e.link?"\n"+e.link:"")),
+      "END:VEVENT");
+  });
+  lines.push("END:VCALENDAR");
+  return lines.join("\r\n");
+}
+function download(name, text){
+  const blob = new Blob([text], {type:"text/calendar"});
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name;
+  document.body.appendChild(a); a.click(); setTimeout(()=>{URL.revokeObjectURL(a.href); a.remove();}, 500);
+}
+
+/* ---------- Render ---------- */
+const $ = s => document.querySelector(s);
+function render(){
+  document.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c.dataset.track===track));
+  $("#showPast").checked = showPast; $("#hideDone").checked = hideDone;
+
+  const list = EVENTS.filter(visible);
+  const upcoming = list.filter(e => !isPast(e));
+
+  // stats
+  const ucas = parse("2027-10-15"), results = parse("2028-08-17");
+  const days = d => Math.max(0, Math.round((d - today)/DAY));
+  const futureDeadlines = upcoming.filter(e=>e.type==="deadline").length;
+  $("#stats").innerHTML =
+    `<div class="stat"><b>${days(ucas)}</b><span>days to UCAS deadline</span></div>
+     <div class="stat"><b>${futureDeadlines}</b><span>deadlines ahead</span></div>
+     <div class="stat"><b>${days(results)}</b><span>days to results</span></div>`;
+
+  // next up: next 4 point events / starts not done
+  const next = upcoming.filter(e => !done.has(e.id) && e.start >= today).slice(0,4);
+  $("#next ol").innerHTML = next.map(e =>
+    `<li data-id="${e.id}"><span class="in">${rel(e)}</span><span>${e.t}</span></li>`).join("");
+
+  // timeline
+  const tl = $("#timeline"); tl.innerHTML = "";
+  let curMonth = null, todayPlaced = false, monthEl = null;
+  const frag = document.createDocumentFragment();
+  const placeToday = () => {
+    const t = document.createElement("div"); t.className = "today"; t.id = "today";
+    t.innerHTML = `<span>Today · ${fmt(today,{day:"numeric",month:"short",year:"numeric"})}</span>`;
+    frag.appendChild(t); todayPlaced = true;
+  };
+  list.forEach(e=>{
+    const past = isPast(e);
+    if (past && !showPast) return;
+    if (hideDone && done.has(e.id)) return;
+    if (!todayPlaced && e.start >= today && !(e.start<=today && e.stop>=today)) { placeToday(); curMonth = null; }
+    const mKey = e.start.getFullYear()+"-"+e.start.getMonth();
+    if (mKey !== curMonth){
+      curMonth = mKey;
+      monthEl = document.createElement("div"); monthEl.className = "month";
+      monthEl.innerHTML = `<h3>${fmt(e.start,{month:"long"})}<small>${e.start.getFullYear()}</small></h3>`;
+      frag.appendChild(monthEl);
+    }
+    const c = `var(${TYPES[e.type].c})`;
+    const el = document.createElement("article");
+    el.className = "item" + (past?" past":"") + (done.has(e.id)?" done":"");
+    el.style.setProperty("--c", c);
+    el.dataset.id = e.id;
+    const tags = [
+      `<span class="tag ${e.status==="confirmed"?"conf":"exp"}">${STATUS[e.status]}</span>`,
+      `<span class="tag">${TYPES[e.type].label}</span>`,
+      ...(e.tracks? e.tracks.map(t=>`<span class="tag">${TRACKNAME[t]}</span>`) : [])
+    ].join("");
+    el.innerHTML = `
+      <div class="top">
+        <div class="body">
+          <div class="when">${whenText(e)}<span class="rel">${rel(e)}</span></div>
+          <div class="title">${e.t}</div>
+          ${e.x?`<div class="detail"><p>${e.x}</p></div>`:""}
+          <div class="tags">${tags}</div>
+          <div class="actions">
+            ${e.link?`<a href="${e.link}" target="_blank" rel="noopener">Official page ↗</a>`:""}
+            <button data-ics="${e.id}">Add to calendar</button>
+          </div>
+        </div>
+        <button class="check" aria-label="Mark done" aria-pressed="${done.has(e.id)}" data-done="${e.id}">${done.has(e.id)?"✓":""}</button>
+      </div>`;
+    frag.appendChild(el);
+  });
+  if (!todayPlaced) placeToday();
+  tl.appendChild(frag);
+
+  $("#legend").innerHTML = Object.values(TYPES).map(t=>`<span><i style="background:var(${t.c})"></i>${t.label}</span>`).join("");
+}
+
+/* ---------- Events ---------- */
+document.addEventListener("click", ev=>{
+  const chip = ev.target.closest(".chip");
+  if (chip){ track = chip.dataset.track; store.set("track", track); render(); return; }
+  const d = ev.target.closest("[data-done]");
+  if (d){ const id=d.dataset.done; done.has(id)?done.delete(id):done.add(id); store.set("done",[...done]); render(); return; }
+  const ic = ev.target.closest("[data-ics]");
+  if (ic){ const e = EVENTS.find(x=>x.id===ic.dataset.ics); download(e.t.replace(/[^a-z0-9]+/gi,"-").toLowerCase()+".ics", makeICS([e])); return; }
+  const n = ev.target.closest(".next li");
+  if (n){ const el = document.querySelector(`.item[data-id="${CSS.escape(n.dataset.id)}"]`); if (el){ el.scrollIntoView({behavior:"smooth",block:"center"}); el.animate([{boxShadow:"0 0 0 3px var(--accent)"},{boxShadow:"0 0 0 0 transparent"}],{duration:1400}); } }
+});
+$("#showPast").addEventListener("change", e=>{ showPast=e.target.checked; store.set("showPast",showPast); render(); });
+$("#hideDone").addEventListener("change", e=>{ hideDone=e.target.checked; store.set("hideDone",hideDone); render(); });
+$("#icsAll").addEventListener("click", ()=> download("road-to-uni.ics", makeICS(EVENTS.filter(e=>visible(e)&&!isPast(e)))));
+$("#toToday").addEventListener("click", ()=> document.getElementById("today")?.scrollIntoView({behavior:"smooth",block:"start"}));
+
+render();
+</script>
+</body>
+</html>
