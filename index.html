@@ -127,9 +127,9 @@ footer{color:var(--muted);font-size:12px;margin-top:40px;line-height:1.6}
     <div class="note">
       <h4>Backup: apply again from Norway in 2028</h4>
       <ul>
-        <li>If she has <b>not firmly accepted</b> an offer, she can apply again in autumn 2028 for 2029 entry, with A-level grades in hand. This opens every medical and dental school that doesn't require Biology, including those that don't take deferred applications.</li>
+        <li>With <b>no firm acceptance</b> of an offer, a new application is possible in autumn 2028 for 2029 entry, with A-level grades in hand. This opens every medical and dental school that doesn't require Biology, including those that don't take deferred applications.</li>
         <li>That means sitting the UCAT again (summer 2028) and asking Owen's for a reference after leaving. Interviews would fall during the Viken year (December 2028 to March 2029), some of them online.</li>
-        <li>Don't firmly accept a Medicine offer that she might later turn down. Medical schools look badly on applicants who declined a Medicine place.</li>
+        <li>Don't firmly accept a Medicine offer that might later be turned down. Medical schools look badly on applicants who declined a Medicine place.</li>
       </ul>
     </div>
   </header>
@@ -162,14 +162,14 @@ footer{color:var(--muted);font-size:12px;margin-top:40px;line-height:1.6}
 /* ---------- Data ----------
    type: deadline | test | visit | prep | milestone | decide
    tracks: subset of ["cam","med","dent"]; omitted = everyone
-   status: "confirmed" | "expected" | "school" (set by her school) | "typical" (usual timing, varies)
+   status: "confirmed" | "expected" | "school" (set by the school) | "typical" (usual timing, varies)
 */
 const EVENTS = [
   {d:"2026-09-07", t:"Year 12 starts", type:"milestone", status:"confirmed",
    x:"A-levels in Maths, Further Maths, Chemistry and Physics."},
 
   {d:"2026-11-23", end:"2027-07-16", t:"Build a super-curricular log", type:"prep", status:"typical",
-   x:"Keep a running note of books, lectures, podcasts, Isaac Physics / Isaac Chemistry problems and projects, with a line on what she took from each. It is the raw material for the personal statement and for interviews.",
+   x:"Keep a running note of books, lectures, podcasts, Isaac Physics / Isaac Chemistry problems and projects, with a line on the main takeaway from each. It is the raw material for the personal statement and for interviews.",
    link:"https://isaacscience.org"},
 
   {d:"2026-11-30", end:"2027-03-26", t:"ESAT phase 1: fluency, little and often", tracks:["cam"], type:"prep", status:"typical",
@@ -188,7 +188,7 @@ const EVENTS = [
    link:"https://summerschools.suttontrust.com"},
 
   {d:"2027-01-27", t:"UK Chemistry Olympiad – Round 1", tracks:["cam","med"], type:"test", status:"typical",
-   x:"Sat in school, usually late January. Owen's has listed this for Year 13 only, so she would need to ask the chemistry department whether a Year 12 can sit it this year. If not, she sits it in January 2028.",
+   x:"Sat in school, usually late January. Owen's has listed this for Year 13 only, so ask the chemistry department whether a Year 12 can sit it this year. If not, it is sat in January 2028.",
    link:"https://edu.rsc.org/enrichment/uk-chemistry-olympiad"},
 
   {d:"2027-02-15", t:"Cambridge Chemistry Race (school teams)", tracks:["cam","med"], type:"test", status:"typical",
@@ -196,7 +196,7 @@ const EVENTS = [
    link:"https://outreach.ch.cam.ac.uk/chemistry-race"},
 
   {d:"2027-03-08", t:"BPhO Senior Physics Challenge (Year 12)", tracks:["cam"], type:"test", status:"typical",
-   x:"The British Physics Olympiad paper for Year 12, sat in school in early March. Owen's doesn't list it for Year 12 (only Year 13 physics competitions), so ask the physics department to enter her. Schools can enter any student, and the problem style is good ESAT Physics practice.",
+   x:"The British Physics Olympiad paper for Year 12, sat in school in early March. Owen's doesn't list it for Year 12 (only Year 13 physics competitions), so ask the physics department for an entry. Schools can enter any student, and the problem style is good ESAT Physics practice.",
    link:"https://www.bpho.org.uk"},
 
   {d:"2027-02-10", t:"St John's College (Cambridge) Year 12 Visit Day", tracks:["cam","med"], type:"visit", status:"confirmed",
@@ -211,7 +211,7 @@ const EVENTS = [
    link:"https://www.undergraduate.study.cam.ac.uk/events/cambridge-open-days"},
 
   {d:"2027-03-22", end:"2027-04-30", t:"Shortlist and book other open days", tracks:["med","dent"], type:"visit", status:"typical",
-   x:"Medical and dental schools mostly run open days in June/July and September/October. Shortlist 6–8 that fit her profile (UCAT-heavy vs. grades-heavy vs. interview style), then book.",
+   x:"Medical and dental schools mostly run open days in June/July and September/October. Shortlist 6–8 that fit the profile (UCAT-heavy vs. grades-heavy vs. interview style), then book.",
    link:"https://www.ucas.com/events"},
 
   {d:"2027-03-29", end:"2027-05-31", t:"UCAT familiarisation (light)", tracks:["med","dent"], type:"prep", status:"typical",
@@ -223,7 +223,7 @@ const EVENTS = [
    link:"https://www.ucas.com/undergraduate/applying-university/ucas-undergraduate-when-apply"},
 
   {d:"2027-05-11", t:"UCAS opens for 2028 entry", type:"milestone", status:"expected",
-   x:"She can register and start the application in the UCAS Hub, but can't submit until September.",
+   x:"Registration and starting the application in the UCAS Hub are possible now. Submission opens in September.",
    link:"https://www.ucas.com/undergraduate/applying-university/ucas-undergraduate-when-apply"},
 
   {d:"2027-05-11", t:"UCAT registration opens", tracks:["med","dent"], type:"deadline", status:"expected",
@@ -235,7 +235,7 @@ const EVENTS = [
    link:"https://esat-tmua.ac.uk/deadlines"},
 
   {d:"2027-06-07", end:"2027-06-25", t:"Year 12 end-of-year exams", type:"milestone", status:"school",
-   x:"These usually set predicted grades, which go on the UCAS form. Cambridge NatSci and Medicine both typically ask for A*A*A. The exact dates are set by her school."},
+   x:"These usually set predicted grades, which go on the UCAS form. Cambridge NatSci and Medicine both typically ask for A*A*A. The exact dates are set by the school."},
 
   {d:"2027-06-01", end:"2027-06-18", t:"Cambridge Chemistry Challenge – C3L6 (Year 12)", tracks:["cam","med"], type:"test", status:"typical",
    x:"A 90-minute paper for Lower Sixth students, sat in school in June. Schools register by around 1 June. Top scorers are invited to a residential camp in Cambridge. There are also monthly online puzzles from November to June.",
@@ -260,7 +260,7 @@ const EVENTS = [
    link:"https://www.ucat.ac.uk/about-ucat/ucat-test-cycle/"},
 
   {d:"2027-07-19", t:"ESAT booking opens", tracks:["cam"], type:"deadline", status:"expected",
-   x:"NatSci candidates sit Mathematics 1 plus two modules from Maths 2, Physics, Chemistry and Biology. She should book the October sitting: Cambridge applicants must take it in October.",
+   x:"NatSci candidates sit Mathematics 1 plus two modules from Maths 2, Physics, Chemistry and Biology. Book the October sitting: Cambridge applicants must take it in October.",
    link:"https://www.undergraduate.study.cam.ac.uk/apply/how/science-engineering-admission-test"},
 
   {d:"2027-07-19", end:"2027-09-10", t:"Personal statement drafting", type:"prep", status:"typical",
@@ -305,7 +305,7 @@ const EVENTS = [
    link:"https://esat-tmua.ac.uk/"},
 
   {d:"2027-10-15", t:"UCAS deadline: Cambridge, Medicine and Dentistry (18:00)", type:"deadline", status:"expected",
-   x:"The big one. Submit Cambridge NatSci plus up to 4 Medicine/Dentistry choices that accept her subjects and deferral, all with 2029 as the entry year (deferred).",
+   x:"The big one. Submit Cambridge NatSci plus up to 4 Medicine/Dentistry choices that accept these subjects and deferral, all with 2029 as the entry year (deferred).",
    link:"https://www.ucas.com/undergraduate/applying-university/ucas-undergraduate-when-apply"},
 
   {d:"2027-10-22", t:"My Cambridge Application deadline", tracks:["cam","med"], type:"deadline", status:"expected",
@@ -343,7 +343,7 @@ const EVENTS = [
   {d:"2028-05-15", end:"2028-06-23", t:"A-level exams", type:"test", status:"typical"},
 
   {d:"2028-06-08", t:"Reply to offers: firm and insurance", type:"deadline", status:"expected",
-   x:"The exact reply date depends on when the last decision arrives. UCAS shows it in the Hub. Only firmly accept an offer she is happy to take up in 2029. With no firm acceptance, she is free to apply again in autumn 2028."},
+   x:"The exact reply date depends on when the last decision arrives. UCAS shows it in the Hub. Only firmly accept an offer worth taking up in 2029. With no firm acceptance, a new application in autumn 2028 is possible."},
 
   {d:"2028-08-17", t:"A-level results day", type:"milestone", status:"expected",
    x:"Places are confirmed through UCAS from 8am."},
@@ -357,7 +357,7 @@ const EVENTS = [
    link:"https://www.ucat.ac.uk/about-ucat/ucat-test-cycle/"},
 
   {d:"2028-10-15", t:"Backup: UCAS deadline for re-application (from Norway)", tracks:["med","dent"], type:"deadline", status:"expected",
-   x:"If she has not firmly accepted an offer, she can apply again, with achieved grades, to any medical or dental school that doesn't require Biology, for 2029 entry. Owen's still writes the reference.",
+   x:"With no firm acceptance of an offer, apply again with achieved grades to any medical or dental school that doesn't require Biology, for 2029 entry. Owen's still writes the reference.",
    link:"https://www.ucas.com/undergraduate/applying-university/ucas-undergraduate-when-apply"},
 
   {d:"2028-12-04", end:"2029-03-30", t:"Backup: interviews during the Viken year", tracks:["med","dent"], type:"test", status:"typical",
